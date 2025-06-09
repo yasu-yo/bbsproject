@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+<h1 class="mt-5">{{ object.id }}の投稿詳細ページ</h1>
+ <div class="card bg-light shadow-sm mt-3">
+        <div class="card-body">
+<div class="container">
+<p>{{ object.author }}：{{ object.created_at }}</p>
+  <p>最終更新：{{ object.updated_at }}</p>
+  <p>{{ object.content }}</p>
+
+   <p><a href="{% url "bbs:update" object.pk %}">{% bootstrap_button button_type="submit" button_class="btn-success" content="編集" size="md" %}</a></p>
+            <p><a href="{% url "bbs:delete" object.pk %}">{% bootstrap_button button_type="submit" button_class="btn-danger" content="削除" size="md" %}</a></p>
+        </div>
+    </div>
+    <div class="mt-3">
+    <a href="{% url 'bbs:index' %}">{% bootstrap_button button_type="submit" button_class="btn-secondary" content="一覧ページへ戻る" size="md" %}</a>
+</div>
+{% endblock %}
