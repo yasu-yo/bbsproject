@@ -94,7 +94,15 @@ DATABASES = {
     }
 }
 DATABASES = {
-    "default": config("DATABASE_URL", default=default_dburl, cast=dburl),
+    'default': {
+        'ENGINE': env('DATABASE_ENGINE', default='django.db.backends.sqlite3'),
+        'NAME': env('DATABASE_DB', default=os.path.join(BASE_DIR, 'db.sqlite3')),
+        # 以下は、MySQLやPostgreSQLの場合に設定
+        # 'USER': env('DATABASE_USER', default='django_user'),
+        # 'PASSWORD': env('DATABASE_PASSWORD', default='password'),
+        # 'HOST': env('DATABASE_HOST', default='localhost'),
+        # 'PORT': env('DATABASE_PORT', default='5432'),
+    }
 }
 
 STATIC_URL = "static/"
@@ -150,3 +158,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ログイン後のリダイレクト先
 LOGIN_REDIRECT_URL = '/bbs/'
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
