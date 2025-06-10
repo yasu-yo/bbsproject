@@ -17,6 +17,8 @@ from pathlib import Path
 from decouple import config
 from dj_database_url import parse as dburl
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 # 環境変数を管理するためのenvオブジェクト作成
 env = environ.Env()
 # .envファイルの読み込み
@@ -26,8 +28,7 @@ SECRET_KEY = env('SECRET_KEY')
 # .envファイルからDEBUGの値を取得し、真偽値に変換
 DEBUG = env.bool('DEBUG', default=False)
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 
 
