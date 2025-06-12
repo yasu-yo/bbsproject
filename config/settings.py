@@ -27,7 +27,7 @@ env.read_env(os.path.join(BASE_DIR, ".env"))
 # .envファイルからSECRET_KEYを読み込み
 SECRET_KEY = env('SECRET_KEY')
 # .envファイルからDEBUGの値を取得し、真偽値に変換
-DEBUG = env.bool('DEBUG', default=False)
+DEBUG = True
 
 
 
@@ -117,9 +117,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-SUPERUSER_NAME = env("SUPERUSER_NAME")
-SUPERUSER_EMAIL = env("SUPERUSER_EMAIL")
-SUPERUSER_PASSWORD = env("SUPERUSER_PASSWORD")
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
